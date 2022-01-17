@@ -1,8 +1,30 @@
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from 'react-router-dom'
+import Layout from '../components/layout/Layout'
+import AboutMe from '../pages/AboutMe'
+import ContactMe from '../pages/ContactMe'
+import Home from '../pages/Home'
+import NotFound from '../pages/NotFound'
+import Portfolio from '../pages/Portfolio'
+import Skills from '../pages/Skills'
+
 function App() {
   return (
-    <h1 className='text-3xl font-bold underline'>
-      Hello world!
-    </h1>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about-me' element={<AboutMe />} />
+          <Route path='/skills' element={<Skills />} />
+          <Route path='/portfolio' element={<Portfolio />} />
+          <Route path='/contact-me' element={<ContactMe />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </Router>
   )
 }
 

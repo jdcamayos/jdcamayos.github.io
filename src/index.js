@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './assets/styles/index.css'
+import 'boxicons/css/boxicons.min.css'
 import App from './routes/App'
 import reportWebVitals from './reportWebVitals'
 
