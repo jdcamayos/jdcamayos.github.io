@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import { motion } from 'framer-motion'
 export default function Home() {
   const socialLinks = [
     {
@@ -25,7 +25,13 @@ export default function Home() {
     window.open(link, '_blank')
   }
   return (
-    <main className='bg-dark text-light grid place-content-center h-[calc(100vh-60px)]'>
+    <motion.main
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      className='bg-dark text-light grid place-content-center h-[calc(100vh-60px)]'
+    >
+      {/* <main > */}
       <section className='mb-[50px] mx-auto'>
         <div className='h-60 w-60 bg-primary rounded-full grid place-content-center'>
           <span className='text-dark'>A profile pic</span>
@@ -65,6 +71,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </main>
+      {/* </main> */}
+    </motion.main>
   )
 }

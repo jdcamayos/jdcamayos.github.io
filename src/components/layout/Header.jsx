@@ -1,5 +1,10 @@
+import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {
+  Link,
+  NavLink,
+  useNavigate,
+} from 'react-router-dom'
 import NavbarContainer from '../navbar/NavbarContainer'
 
 function Header() {
@@ -14,30 +19,40 @@ function Header() {
       id: 1,
       title: 'Home',
       to: '/',
+      icon: 'bx-home',
     },
     {
       id: 2,
       title: 'About me',
       to: '/about-me',
+      icon: 'bxs-spreadsheet',
     },
     {
       id: 3,
       title: 'Skills',
       to: '/skills',
+      icon: 'bx-wrench',
     },
     {
       id: 4,
       title: 'Portfolio',
       to: '/portfolio',
+      icon: 'bx-briefcase-alt',
     },
     {
       id: 5,
       title: 'Contact me',
       to: '/contact-me',
+      icon: 'bx-send',
     },
   ]
   return (
-    <header className='h-[60px] bg-dark text-light text-[1.8rem] px-3'>
+    <motion.header
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      className='h-[60px] bg-dark text-light text-[1.8rem] px-3'
+    >
       <div className='flex flex-row justify-between h-full'>
         <div className='self-center h-[60px] w-[60px]'>
           <button
@@ -52,7 +67,7 @@ function Header() {
             Juan Camayo
           </Link>
         </div>
-        <div className='self-center h-[60px] w-[60px]'>
+        <div className='self-center'>
           {/* Button for mobile  */}
           <button
             className='block md:hidden h-[60px] w-[60px]'
@@ -73,21 +88,26 @@ function Header() {
             <ul className='flex flex-row space-x-3'>
               {links.map(link => (
                 <li key={link.id}>
-                  <Link to={link.to}>
+                  <NavLink
+                    to={link.to}
+                    className={({ isActive }) =>
+                      isActive ? 'text-primary' : ''
+                    }
+                  >
                     <span className='hidden md:block lg:hidden'>
-                      <i className='bx bx-equalizer'></i>
+                      <i className={`bx ${link.icon}`}></i>
                     </span>
                     <span className='hidden lg:block'>
                       {link.title}
                     </span>
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }
 

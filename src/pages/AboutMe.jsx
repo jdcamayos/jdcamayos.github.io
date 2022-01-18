@@ -1,10 +1,18 @@
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 export default function AboutMe() {
   return (
-    <main className='bg-dark text-light pt-8 flex justify-center h-[calc(100vh-60px)]'>
-    <section className='w-80'>
-        <h1 className='font-hammer text-5xl text-center mb-10'>About me</h1>
+    <motion.main
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      className='bg-dark text-light pt-8 flex justify-center h-[calc(100vh-60px)]'
+    >
+      <section className='w-80'>
+        <h1 className='font-hammer text-5xl text-center mb-10'>
+          About me
+        </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur,
           adipisicing elit. Nulla eveniet ducimus
@@ -29,6 +37,6 @@ export default function AboutMe() {
           </Link>
         </div>
       </section>
-    </main>
+    </motion.main>
   )
 }

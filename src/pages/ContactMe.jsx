@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 export default function ContactMe() {
   const wayContact = [
     {
@@ -29,7 +31,12 @@ export default function ContactMe() {
     window.open(link, '_blank')
   }
   return (
-    <main className='bg-dark text-light pt-8 flex justify-center h-[calc(100vh-60px)]'>
+    <motion.main
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      className='bg-dark text-light pt-8 flex justify-center h-[calc(100vh-60px)]'
+    >
       <section className='w-80'>
         <h1 className='font-hammer text-5xl text-center mb-10'>
           Contact me
@@ -51,6 +58,6 @@ export default function ContactMe() {
           ))}
         </div>
       </section>
-    </main>
+    </motion.main>
   )
 }

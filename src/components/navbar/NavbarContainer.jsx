@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
 
 export default function NavbarContainer({
@@ -11,7 +12,13 @@ export default function NavbarContainer({
   //   handle(false)
   // }
   return (
-    <nav className='z-40 absolute top-0 right-0'>
+    <motion.nav
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      exit={{ scaleX: 0 }}
+      // dura
+      className='z-40 absolute top-0 right-0'
+    >
       <div className='h-screen w-60 bg-primary'>
         <div className='h-[60px] border-b border-dark'>
           <button
@@ -24,7 +31,7 @@ export default function NavbarContainer({
         <div className='text-dark m-3'>
           <ul className='flex flex-col space-y-3'>
             {links.map(link => (
-              <li key={link.id}>
+              <li key={link.id} className='my-auto'>
                 <NavLink
                   to={link.to}
                   onClick={() => handle(false)}
@@ -32,40 +39,16 @@ export default function NavbarContainer({
                     isActive ? 'font-bold' : ''
                   }
                 >
-                  <span className=''>
-                    <i className='bx bx-equalizer'></i>
+                  <span className='mr-2'>
+                    <i className={`bx ${link.icon}`}></i>
                   </span>
                   <span className=''>{link.title}</span>
                 </NavLink>
               </li>
             ))}
-            {/* <li>
-              <span className=''>
-                <i className='bx bx-equalizer'></i>
-              </span>
-              <span className=''>Home</span>
-            </li>
-            <li>
-              <span className=''>
-                <i className='bx bx-equalizer'></i>
-              </span>
-              <span className=''>Home</span>
-            </li>
-            <li>
-              <span className=''>
-                <i className='bx bx-equalizer'></i>
-              </span>
-              <span className=''>Home</span>
-            </li>
-            <li>
-              <span className=''>
-                <i className='bx bx-equalizer'></i>
-              </span>
-              <span className=''>Home</span>
-            </li> */}
           </ul>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
