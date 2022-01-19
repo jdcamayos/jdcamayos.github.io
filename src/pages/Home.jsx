@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import ProfilePic from '../assets/images/profile-pic-large.jpg'
 export default function Home() {
   const socialLinks = [
     {
@@ -29,13 +30,23 @@ export default function Home() {
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       exit={{ scaleY: 0 }}
-      className='bg-dark text-light grid place-content-center h-[calc(100vh-60px)]'
+      className='bg-dark text-light flex flex-col pt-[10px] md:pt-[20px] lg:pt-[50px] h-[calc(100vh-60px)]'
     >
       {/* <main > */}
       <section className='mb-[50px] mx-auto'>
-        <div className='h-60 w-60 bg-primary rounded-full grid place-content-center'>
-          <span className='text-dark'>A profile pic</span>
-        </div>
+        <motion.div
+          initial={{ scaleY: 0, scaleX: 0 }}
+          animate={{ scaleY: 1, scaleX: 1 }}
+          exit={{ scaleY: 0, scaleX: 0 }}
+          className='h-60 w-60 bg-primary rounded-full grid place-content-center overflow-hidden'
+        >
+          {/* <span className='text-dark'>A profile pic</span> */}
+          <img
+            src={ProfilePic}
+            className='mt-10'
+            alt='Juan face'
+          />
+        </motion.div>
       </section>
       <section className='text-center text-primary'>
         <span className='text-6xl'>
@@ -65,7 +76,7 @@ export default function Home() {
         <div className='my-[20px] flex justify-center'>
           <Link
             to='/about-me'
-            className='btn text-center bg-primary w-80 text-dark font-semibold'
+            className='btn font-mont text-center bg-primary w-80 text-dark font-semibold'
           >
             About me
           </Link>

@@ -51,7 +51,7 @@ function Header() {
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       exit={{ scaleY: 0 }}
-      className='h-[60px] bg-dark text-light text-[1.8rem] px-3'
+      className='h-[60px] bg-dark text-light text-[1.8rem] px-3 overflow-x-hidden overflow-y-hidden'
     >
       <div className='flex flex-row justify-between h-full'>
         <div className='self-center h-[60px] w-[60px]'>

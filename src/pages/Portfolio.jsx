@@ -31,7 +31,7 @@ export default function Portfolio() {
         <div className='my-[20px] flex justify-center'>
           <Link
             to='/contact-me'
-            className='btn text-center bg-primary w-80 text-dark font-semibold'
+            className='btn font-mont text-center bg-primary w-80 text-dark font-semibold'
           >
             Contact me
           </Link>
