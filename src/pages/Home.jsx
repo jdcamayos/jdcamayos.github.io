@@ -72,8 +72,8 @@ export default function Home() {
           </ul>
         </div>
       </section>
-      <section className='absolute bottom-0 w-screen '>
-        <div className='my-[20px] flex justify-center'>
+      <section className='h-[60px] w-screen'>
+        <div className='my-[10px] flex justify-center'>
           <Link
             to='/about-me'
             className='btn font-mont text-center bg-primary w-80 text-dark font-semibold'
