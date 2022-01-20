@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 export default function Skills() {
   const [skillSelected, setSkillSelected] =
@@ -120,11 +119,8 @@ export default function Skills() {
     },
   }
   return (
-    <motion.main
-      initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
-      exit={{ scaleY: 0 }}
-      className='bg-dark text-light pt-8 flex flex-col justify-center h-[calc(100vh-60px)]'
+    <main
+      className='bg-dark text-light flex flex-col justify-center'
     >
       <section className='w-80 mx-auto'>
         <h1 className='font-hammer text-5xl text-center mb-10'>
@@ -178,16 +174,6 @@ export default function Skills() {
           </div>
         </div>
       </section>
-      <section className='h-[60px] w-screen '>
-        <div className='my-[10px] flex justify-center'>
-          <Link
-            to='/portfolio'
-            className='btn font-mont text-center bg-primary w-80 text-dark font-semibold'
-          >
-            Portfolio
-          </Link>
-        </div>
-      </section>
-    </motion.main>
+    </main>
   )
 }

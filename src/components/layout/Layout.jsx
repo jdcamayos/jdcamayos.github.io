@@ -1,12 +1,14 @@
+import Footer from './Footer'
 import Header from './Header'
 
-function Layout({ children }) {
+export default function Layout({ children }) {
   return (
-    <div className='bg-dark overflow-x-hidden'>
+    <div className='bg-dark overflow-x-hidden min-h-screen'>
       <Header />
-      {children}
+      <div className='min-h-[calc(100vh-120px)]'>
+        {children}
+      </div>
+      <Footer />
     </div>
   )
 }
-
-export default Layout

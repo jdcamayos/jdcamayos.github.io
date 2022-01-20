@@ -1,14 +1,6 @@
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-
 export default function AboutMe() {
   return (
-    <motion.main
-      initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
-      exit={{ scaleY: 0 }}
-      className='bg-dark text-light pt-8 flex flex-col justify-center h-[calc(100vh-60px)]'
-    >
+    <main className='text-light'>
       <section className='w-80 mx-auto'>
         <h1 className='font-hammer text-5xl text-center mb-10'>
           About me
@@ -27,16 +19,6 @@ export default function AboutMe() {
           applying them to projects for clients and staff.
         </p>
       </section>
-      <section className='h-[60px] w-screen '>
-        <div className='my-[10px] flex justify-center'>
-          <Link
-            to='/skills'
-            className='btn font-mont text-center bg-primary w-80 text-dark font-semibold'
-          >
-            Skills
-          </Link>
-        </div>
-      </section>
-    </motion.main>
+    </main>
   )
 }
