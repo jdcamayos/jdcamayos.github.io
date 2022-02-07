@@ -16,8 +16,9 @@
     "web-vitals": "2.1.3"
   },
   "scripts": {
+    "deploy:hosting": "scp -P 22022 -r ./build/. jdcamayos@jdcamayos.com:/home/jdcamayos/public_html",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy:github": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

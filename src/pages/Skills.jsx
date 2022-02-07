@@ -119,9 +119,7 @@ export default function Skills() {
     },
   }
   return (
-    <main
-      className='bg-dark text-light flex flex-col justify-center'
-    >
+    <main className='bg-dark text-light flex flex-col justify-center'>
       <section className='w-80 mx-auto'>
         <h1 className='font-hammer text-5xl text-center mb-10'>
           Skills
@@ -140,16 +138,37 @@ export default function Skills() {
                 mySkills[mySkills[skillSelected]['prev']][
                   'title'
                 ]
-              }<span className='ml-4'><i className='bx bx-up-arrow-alt'/></span>
+              }
+              <span className='ml-4'>
+                <i className='bx bx-up-arrow-alt' />
+              </span>
             </button>
           </div>
           <div className='text-light'>
             <h2 className='font-bold text-center text-2xl text-primary pt-3'>
               {mySkills[skillSelected]['title']}
             </h2>
-            <motion.ul animate={{scaleY: 1}} initial={{ scaleY: 0}} exit={{scaleY: 1}}  className='px-4 py-2'>
+            <motion.ul
+              initial={{
+                translateY: 100,
+                opacity: 0,
+                animationDelay: 300,
+              }}
+              animate={{
+                translateY: 0,
+                opacity: 1,
+              }}
+              exit={{
+                translateY: 100,
+                opacity: 0,
+              }}
+              className='px-4 py-2'
+            >
               {mySkills[skillSelected]['list'].map(item => (
-                <li key={item.id} className='self-center text-xl my-2'>
+                <li
+                  key={item.id}
+                  className='self-center text-xl my-2'
+                >
                   <i className={`bx ${item.icon} mr-2`} />
                   <span>{item.title}</span>
                 </li>
@@ -169,7 +188,10 @@ export default function Skills() {
                 mySkills[mySkills[skillSelected]['post']][
                   'title'
                 ]
-              }<span className='ml-4'><i className='bx bx-down-arrow-alt'/></span>
+              }
+              <span className='ml-4'>
+                <i className='bx bx-down-arrow-alt' />
+              </span>
             </button>
           </div>
         </div>
