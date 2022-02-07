@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { HelmetProvider, Helmet } from 'react-helmet-async'
 
 export default function Skills() {
   const [skillSelected, setSkillSelected] =
@@ -119,83 +120,155 @@ export default function Skills() {
     },
   }
   return (
-    <main className='bg-dark text-light flex flex-col justify-center'>
-      <section className='w-80 mx-auto'>
-        <h1 className='font-hammer text-5xl text-center mb-10'>
-          Skills
-        </h1>
-        <div className='font-mont border-2 border-light rounded-lg'>
-          <div className='text-center text-light text-2xl font-semibold'>
-            <button
-              className='w-full border-b-2 border-light py-3'
-              onClick={() =>
-                setSkillSelected(
-                  mySkills[skillSelected]['prev']
-                )
-              }
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>Skills - Juan Camayo</title>
+        </Helmet>
+      </HelmetProvider>
+      <main className='bg-dark text-light flex flex-col justify-center'>
+        <section className='w-80 mx-auto'>
+          <motion.h1
+            initial={{
+              scale: 2.5,
+              opacity: 0,
+            }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+            }}
+            transition={{ duration: 0.5 }}
+            exit={{
+              scale: 2.5,
+              opacity: 0,
+            }}
+            className='font-hammer text-5xl text-center mb-10'
+          >
+            Skills
+          </motion.h1>
+          <div
+            // initial={{
+            //   translateY: 100,
+            //   opacity: 0,
+            //   animationDelay: 300,
+            // }}
+            // animate={{
+            //   translateY: 0,
+            //   opacity: 1,
+            //   // animationDelay: 300,
+            // }}
+            // exit={{
+            //   translateY: 100,
+            //   opacity: 0,
+            // }}
+            className='font-mont border-2 border-light rounded-lg'
+          >
+            <div className='text-center text-light text-2xl font-semibold'>
+              <button
+                className='w-full border-b-2 border-light py-3'
+                onClick={() =>
+                  setSkillSelected(
+                    mySkills[skillSelected]['prev']
+                  )
+                }
+              >
+                {
+                  mySkills[mySkills[skillSelected]['prev']][
+                    'title'
+                  ]
+                }
+                <span className='ml-4'>
+                  <i className='bx bx-up-arrow-alt' />
+                </span>
+              </button>
+            </div>
+            <div
+              // initial={{
+              //   translateY: 100,
+              //   opacity: 0,
+              //   animationDelay: 300,
+              // }}
+              // animate={{
+              //   translateY: 0,
+              //   opacity: 1,
+              //   animationDelay: 300,
+              // }}
+              // exit={{
+              //   translateY: 100,
+              //   opacity: 0,
+              // }}
+              className='text-light'
             >
-              {
-                mySkills[mySkills[skillSelected]['prev']][
-                  'title'
-                ]
-              }
-              <span className='ml-4'>
-                <i className='bx bx-up-arrow-alt' />
-              </span>
-            </button>
+              <motion.h2
+                initial={{
+                  translateY: 100,
+                  opacity: 0,
+                }}
+                animate={{
+                  translateY: 0,
+                  opacity: 1,
+                }}
+                exit={{
+                  translateY: 100,
+                  opacity: 0,
+                }}
+                className='font-bold text-center text-2xl text-primary pt-3'
+              >
+                {mySkills[skillSelected]['title']}
+              </motion.h2>
+              <motion.ul
+                initial={{
+                  scaleY: 0,
+                  opacity: 0,
+                }}
+                animate={{
+                  scaleY: 1,
+                  opacity: 1,
+                }}
+                transition={{ duration: 0.5 }}
+                exit={{
+                  scaleY: 0,
+                  opacity: 0,
+                }}
+                className='px-4 py-2'
+              >
+                {mySkills[skillSelected]['list'].map(
+                  item => (
+                    <li
+                      key={item.id}
+                      className='self-center text-xl my-2'
+                    >
+                      <i
+                        className={`bx ${item.icon} mr-2`}
+                      />
+                      <span>{item.title}</span>
+                    </li>
+                  )
+                )}
+              </motion.ul>
+            </div>
+            <div className='text-center text-light text-2xl font-semibold'>
+              <button
+                className='w-full border-t-2 border-light py-3'
+                onClick={() =>
+                  setSkillSelected(
+                    mySkills[skillSelected]['post']
+                  )
+                }
+              >
+                {
+                  mySkills[mySkills[skillSelected]['post']][
+                    'title'
+                  ]
+                }
+                <span className='ml-4'>
+                  <i className='bx bx-down-arrow-alt' />
+                </span>
+              </button>
+            </div>
           </div>
-          <div className='text-light'>
-            <h2 className='font-bold text-center text-2xl text-primary pt-3'>
-              {mySkills[skillSelected]['title']}
-            </h2>
-            <motion.ul
-              initial={{
-                translateY: 100,
-                opacity: 0,
-                animationDelay: 300,
-              }}
-              animate={{
-                translateY: 0,
-                opacity: 1,
-              }}
-              exit={{
-                translateY: 100,
-                opacity: 0,
-              }}
-              className='px-4 py-2'
-            >
-              {mySkills[skillSelected]['list'].map(item => (
-                <li
-                  key={item.id}
-                  className='self-center text-xl my-2'
-                >
-                  <i className={`bx ${item.icon} mr-2`} />
-                  <span>{item.title}</span>
-                </li>
-              ))}
-            </motion.ul>
-          </div>
-          <div className='text-center text-light text-2xl font-semibold'>
-            <button
-              className='w-full border-t-2 border-light py-3'
-              onClick={() =>
-                setSkillSelected(
-                  mySkills[skillSelected]['post']
-                )
-              }
-            >
-              {
-                mySkills[mySkills[skillSelected]['post']][
-                  'title'
-                ]
-              }
-              <span className='ml-4'>
-                <i className='bx bx-down-arrow-alt' />
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   )
 }
